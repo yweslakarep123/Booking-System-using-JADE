@@ -46,32 +46,71 @@ Provider → Customer: CONFIRM/DISCONFIRM (hasil)
 - `EnhancedLoggerUtil.java` - Logging system (CSV + JSON)
 
 ### GUI Components
+- `EnhancedCinemaGUI.java` - GUI bioskop utama dengan visualisasi kursi seperti Cinema XXI
+- `CinemaSeatGUI.java` - GUI kursi bioskop sederhana
 - `BookingGUI.java` - Interface pemesanan untuk customer
 - `EnhancedMainContainer.java` - Control panel untuk sistem
 
 ## Cara Menjalankan
 
-### 1. Menggunakan IntelliJ IDEA
+### 1. Menggunakan IntelliJ IDEA (Recommended)
 1. Buka project di IntelliJ IDEA
 2. Pastikan JADE library sudah ditambahkan ke classpath
-3. Klik tombol Run pada `EnhancedMainContainer.java`
-4. Sistem akan membuka GUI utama
+3. Pilih salah satu GUI yang ingin dijalankan:
+   - **`EnhancedCinemaGUI.java`** - GUI bioskop utama dengan visualisasi kursi (default)
+   - **`CinemaSeatGUI.java`** - GUI kursi bioskop sederhana
+   - **`EnhancedMainContainer.java`** - Control panel untuk sistem multi-agent
+4. Klik tombol Run pada file yang dipilih
 
 ### 2. Menggunakan Command Line
 ```bash
+# GUI Bioskop Utama (Recommended)
 javac -cp "libs/jade.jar:src" src/*.java
+java -cp "libs/jade.jar:src" EnhancedCinemaGUI
+
+# GUI Kursi Sederhana
+java -cp "libs/jade.jar:src" CinemaSeatGUI
+
+# Sistem Multi-Agent
 java -cp "libs/jade.jar:src" EnhancedMainContainer
+```
+
+### 3. Menggunakan Script
+```bash
+# Windows
+run_cinema_gui.bat
+
+# Linux/Mac
+chmod +x run_cinema_gui.sh
+./run_cinema_gui.sh
 ```
 
 ## Fitur GUI
 
-### Main Container
+### Enhanced Cinema GUI (Main Interface)
+- **Movie Selection**: Dropdown pilihan film (Batman, Avengers, Spider-Man, dll)
+- **Time Selection**: Pilihan jam tayang (10:00, 13:00, 16:00, 19:00, 22:00)
+- **Date Selection**: Input tanggal dengan format YYYY-MM-DD
+- **Interactive Seat Map**: Visualisasi kursi 8 baris × 12 kolom dengan warna:
+  - 🟢 **Hijau**: Kursi tersedia
+  - 🔵 **Biru**: Kursi yang dipilih
+  - 🔴 **Merah**: Kursi sudah terpesan
+- **Real-time Updates**: Status kursi berubah secara real-time
+- **Legend Panel**: Penjelasan warna kursi
+- **Booking Log**: Area log untuk tracking aktivitas
+
+### Cinema Seat GUI (Simple Interface)
+- **Basic Seat Layout**: Layout kursi sederhana
+- **Color-coded Seats**: Sistem warna yang sama dengan Enhanced GUI
+- **Quick Selection**: Interface yang lebih straightforward
+
+### Main Container (Multi-Agent System)
 - **Start Agents**: Memulai sistem multi-agent
 - **Stop Agents**: Menghentikan semua agen
 - **Clear Log**: Membersihkan log area
 - **Show Booking GUI**: Membuka interface pemesanan
 
-### Booking Interface
+### Booking Interface (Legacy)
 - Input judul film
 - Pilihan tanggal (format YYYY-MM-DD)
 - Pilihan jam tayang (10:00, 13:00, 16:00, 19:00, 22:00)
@@ -112,6 +151,32 @@ Success: boolean
 Message: string (detail hasil)
 Transaction ID: string (ID transaksi)
 ```
+
+## Cinema XXI Style GUI Features
+
+### Interactive Seat Selection
+- **Visual Seat Map**: Layout kursi 8×12 dengan representasi visual yang jelas
+- **Color-coded Status**: 
+  - 🟢 **Green**: Available seats (tersedia)
+  - 🔵 **Blue**: Selected seats (dipilih user)
+  - 🔴 **Red**: Booked seats (sudah terpesan)
+- **Real-time Updates**: Status kursi berubah secara real-time saat dipilih
+- **Tooltip Information**: Hover untuk melihat detail status kursi
+- **Legend Panel**: Penjelasan warna dan status kursi
+
+### Movie & Time Management
+- **Multiple Movies**: 7 film populer (Batman, Avengers, Spider-Man, dll)
+- **Flexible Showtimes**: 5 jam tayang dari pagi hingga malam
+- **Date Selection**: Pilihan tanggal yang fleksibel
+- **Dynamic Seat Loading**: Kursi berbeda untuk setiap kombinasi film+waktu
+- **Smart Booking Simulation**: Simulasi booking yang realistis
+
+### User Experience
+- **Intuitive Interface**: Design yang mudah dipahami
+- **Responsive Controls**: Button dan input yang responsif
+- **Clear Feedback**: Status dan pesan yang jelas
+- **Booking Confirmation**: Konfirmasi booking dengan detail lengkap
+- **Activity Logging**: Tracking semua aktivitas user
 
 ## Logging System
 
