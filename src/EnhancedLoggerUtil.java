@@ -1,19 +1,18 @@
 import java.io.FileWriter;
-import java.io.RandomAccessFile;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.Map;
-import java.util.HashMap;
 
 public class EnhancedLoggerUtil {
-    private static final String CSV_FILE_NAME = "conversation_log.csv";
-    private static final String JSON_FILE_NAME = "conversation_log.json";
+    private static final String CSV_FILE_NAME = generateLogFileName();
     private static boolean csvInitialized = false;
-    private static boolean jsonInitialized = false;
     private static final ReentrantLock csvLock = new ReentrantLock();
-    private static final ReentrantLock jsonLock = new ReentrantLock();
+    
+    private static String generateLogFileName() {
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        return "conversation_log_" + timestamp + ".csv";
+    }
     
     // Log levels
     public enum LogLevel {
@@ -29,9 +28,6 @@ public class EnhancedLoggerUtil {
                                   String conversationId, String content, LogLevel level) {
         // Log to CSV
         logToCSV(sender, receiver, performative, conversationId, content, level);
-        
-        // Log to JSON
-        logToJSON(sender, receiver, performative, conversationId, content, level);
         
         // Console output for debugging
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -62,79 +58,7 @@ public class EnhancedLoggerUtil {
         }
     }
     
-    private static void logToJSON(String sender, String receiver, String performative,
-                                  String conversationId, String content, LogLevel level) {
-        jsonLock.lock();
-        try {
-            if (!jsonInitialized) {
-                // First time writing - create new file
-                try (FileWriter fw = new FileWriter(JSON_FILE_NAME)) {
-                    fw.write("[\n");
-                    fw.write(formatJSONEntry(createLogEntry(sender, receiver, performative, conversationId, content, level)));
-                    fw.write("\n]");
-                    fw.flush();
-                }
-                jsonInitialized = true;
-            } else {
-                // For simplicity, we'll just append to the file and handle JSON formatting later
-                // This is a simplified approach that works reliably
-                try (FileWriter fw = new FileWriter(JSON_FILE_NAME, true)) {
-                    fw.write(",\n");
-                    fw.write(formatJSONEntry(createLogEntry(sender, receiver, performative, conversationId, content, level)));
-                    fw.write("\n]");
-                    fw.flush();
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error writing to JSON log: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            jsonLock.unlock();
-        }
-    }
-    
-    private static Map<String, Object> createLogEntry(String sender, String receiver, String performative,
-                                                     String conversationId, String content, LogLevel level) {
-        Map<String, Object> logEntry = new HashMap<>();
-        logEntry.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-        logEntry.put("sender", sender);
-        logEntry.put("receiver", receiver);
-        logEntry.put("performative", performative);
-        logEntry.put("conversationId", conversationId);
-        logEntry.put("content", content);
-        logEntry.put("level", level.toString());
-        return logEntry;
-    }
-    
-    private static String formatJSONEntry(Map<String, Object> entry) {
-        StringBuilder json = new StringBuilder();
-        json.append("  {\n");
-        
-        boolean first = true;
-        for (Map.Entry<String, Object> pair : entry.entrySet()) {
-            if (!first) json.append(",\n");
-            json.append("    \"").append(pair.getKey()).append("\": ");
-            
-            Object value = pair.getValue();
-            if (value instanceof String) {
-                json.append("\"").append(escapeJSONString((String) value)).append("\"");
-            } else {
-                json.append(value);
-            }
-            first = false;
-        }
-        
-        json.append("\n  }");
-        return json.toString();
-    }
-    
-    private static String escapeJSONString(String str) {
-        return str.replace("\\", "\\\\")
-                 .replace("\"", "\\\"")
-                 .replace("\n", "\\n")
-                 .replace("\r", "\\r")
-                 .replace("\t", "\\t");
-    }
+
     
     // Log system events
     public static void logSystemEvent(String event, String details) {
@@ -171,5 +95,15 @@ public class EnhancedLoggerUtil {
     public static void cleanupOldLogs(int daysToKeep) {
         logSystemEvent("CLEANUP", "Cleaning up logs older than " + daysToKeep + " days");
         // Implementation would go here
+    }
+    
+    // Get current log file name
+    public static String getCurrentLogFileName() {
+        return CSV_FILE_NAME;
+    }
+    
+    // Log system startup
+    public static void logSystemStartup() {
+        logSystemEvent("SYSTEM_STARTUP", "Multi-Agent Booking System started. Log file: " + CSV_FILE_NAME);
     }
 }

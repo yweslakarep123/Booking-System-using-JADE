@@ -25,80 +25,52 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$MODULE_DIR$/out" />
   </component>
-      <component name="RunManager" selected="Application.EnhancedCinemaGUI">
-        <configuration name="EnhancedCinemaGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="EnhancedCinemaGUI" />
-            <module name="multi-agent-booking" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="EnhancedCinemaGUI.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <configuration name="EnhancedMainContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="EnhancedMainContainer" />
-            <module name="multi-agent-booking" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="EnhancedMainContainer.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <configuration name="CinemaSeatGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="CinemaSeatGUI" />
-            <module name="multi-agent-booking" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="CinemaSeatGUI.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <configuration name="MainContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="MainContainer" />
-            <module name="multi-agent-booking" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="MainContainer.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <configuration name="BookingGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="BookingGUI" />
-            <module name="multi-agent-booking" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="BookingGUI.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <recent_temporary>
-            <list size="5">
-                <item index="0" value="EnhancedCinemaGUI" />
-                <item index="1" value="CinemaSeatGUI" />
-                <item index="2" value="EnhancedMainContainer" />
-                <item index="3" value="MainContainer" />
-                <item index="4" value="BookingGUI" />
-            </list>
-        </recent_temporary>
+  <component name="RunManager" selected="Application.EnhancedMainContainer">
+    <configuration name="EnhancedMainContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EnhancedMainContainer" />
+      <module name="multi-agent-booking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EnhancedMainContainer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainContainer" />
+      <module name="multi-agent-booking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainContainer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookingGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BookingGUI" />
+      <module name="multi-agent-booking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BookingGUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" value="EnhancedMainContainer" />
+        <item index="1" value="MainContainer" />
+        <item index="2" value="BookingGUI" />
+      </list>
+    </recent_temporary>
   </component>
 </module>

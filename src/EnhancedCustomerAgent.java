@@ -24,9 +24,7 @@ public class EnhancedCustomerAgent extends Agent {
     @Override
     protected void setup() {
         System.out.println("EnhancedCustomerAgent started: " + getLocalName());
-        
-        // Add initial behavior to request movie information
-        addBehaviour(new RequestMovieInfoBehaviour());
+        System.out.println("Customer Agent is ready. Waiting for booking requests...");
         
         // Add cyclic behavior to handle responses
         addBehaviour(new HandleResponsesBehaviour());
@@ -35,29 +33,7 @@ public class EnhancedCustomerAgent extends Agent {
         addBehaviour(new TimeoutBehaviour());
     }
     
-    private class RequestMovieInfoBehaviour extends OneShotBehaviour {
-        @Override
-        public void action() {
-            setState(AgentState.REQUESTING_INFO);
-            
-            // Create structured request
-            String movieRequest = createMovieRequest();
-            lastRequestContent = movieRequest;
-            conversationId = "movie_booking_" + requestCounter.incrementAndGet();
-            
-            ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
-            request.addReceiver(new AID("provider", AID.ISLOCALNAME));
-            request.setConversationId(conversationId);
-            request.setContent(movieRequest);
-            request.setReplyWith("request_" + System.currentTimeMillis());
-            
-            send(request);
-            
-            EnhancedLoggerUtil.logMessage(getLocalName(), "provider", "REQUEST", conversationId, movieRequest);
-            System.out.println("Customer: Mengirim permintaan info film...");
-            System.out.println("State: " + currentState);
-        }
-    }
+
     
     private class HandleResponsesBehaviour extends CyclicBehaviour {
         @Override
@@ -190,7 +166,7 @@ public class EnhancedCustomerAgent extends Agent {
                 
                 if (retryCount < MAX_RETRIES) {
                     if (currentState == AgentState.REQUESTING_INFO) {
-                        addBehaviour(new RequestMovieInfoBehaviour());
+                        addBehaviour(new RequestMovieInfoBehaviour("Default", "Today", "19:00", "Regular", 1));
                     } else {
                         requestBooking();
                     }
@@ -202,9 +178,7 @@ public class EnhancedCustomerAgent extends Agent {
         }
     }
     
-    private String createMovieRequest() {
-        return "REQUEST_INFO:Film=Batman,Date=2025-08-25,Time=19:00,Class=VIP,Tickets=2";
-    }
+
     
     private String createBookingRequest() {
         return "BOOKING:Time=19:00,Seats=A1,A2,Class=VIP";
@@ -231,5 +205,58 @@ public class EnhancedCustomerAgent extends Agent {
         } finally {
             stateLock.unlock();
         }
+    }
+    
+    // Method untuk memulai request dari GUI
+    public void startBookingRequest(String movieTitle, String date, String time, String seatClass, int ticketCount) {
+        addBehaviour(new RequestMovieInfoBehaviour(movieTitle, date, time, seatClass, ticketCount));
+    }
+    
+    // Updated RequestMovieInfoBehaviour dengan parameter
+    private class RequestMovieInfoBehaviour extends OneShotBehaviour {
+        private String movieTitle;
+        private String date;
+        private String time;
+        private String seatClass;
+        private int ticketCount;
+        
+        public RequestMovieInfoBehaviour(String movieTitle, String date, String time, String seatClass, int ticketCount) {
+            this.movieTitle = movieTitle;
+            this.date = date;
+            this.time = time;
+            this.seatClass = seatClass;
+            this.ticketCount = ticketCount;
+        }
+        
+        @Override
+        public void action() {
+            setState(AgentState.REQUESTING_INFO);
+            
+            // Create structured request
+            String movieRequest = createMovieRequest(movieTitle, date, time, seatClass, ticketCount);
+            lastRequestContent = movieRequest;
+            conversationId = "movie_booking_" + requestCounter.incrementAndGet();
+            
+            ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
+            request.addReceiver(new AID("provider", AID.ISLOCALNAME));
+            request.setConversationId(conversationId);
+            request.setContent(movieRequest);
+            request.setReplyWith("request_" + System.currentTimeMillis());
+            
+            send(request);
+            
+            EnhancedLoggerUtil.logMessage(getLocalName(), "provider", "REQUEST", conversationId, movieRequest);
+            System.out.println("Customer: Mengirim permintaan info film...");
+            System.out.println("State: " + currentState);
+        }
+    }
+    
+    private String createDefaultMovieRequest() {
+        return "REQUEST_INFO:Film=Default,Date=Today,Time=19:00,Class=Regular,Tickets=1";
+    }
+    
+    private String createMovieRequest(String movieTitle, String date, String time, String seatClass, int ticketCount) {
+        return String.format("REQUEST_INFO:Film=%s,Date=%s,Time=%s,Class=%s,Tickets=%d", 
+                movieTitle, date, time, seatClass, ticketCount);
     }
 }

@@ -104,6 +104,10 @@ public class EnhancedMainContainer extends JFrame {
         try {
             logMessage("Starting Multi-Agent System...");
             
+            // Log system startup
+            EnhancedLoggerUtil.logSystemStartup();
+            logMessage("Log file created: " + EnhancedLoggerUtil.getCurrentLogFileName());
+            
             // Initialize JADE Runtime
             rt = Runtime.instance();
             Profile p = new ProfileImpl();
@@ -183,6 +187,11 @@ public class EnhancedMainContainer extends JFrame {
             bookingGUI.toFront();
             logMessage("Booking GUI brought to front");
         }
+    }
+    
+    // Method untuk mendapatkan reference ke customer agent
+    public AgentController getCustomerAgent() {
+        return customerAgent;
     }
     
     private void logMessage(String message) {
