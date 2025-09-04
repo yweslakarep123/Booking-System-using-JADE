@@ -1,0 +1,2 @@
+timestamp,sender,receiver,performative,conversationId,content,level
+2025-09-04 17:44:07,GUI,LOCAL,BOOKING_SUCCESS,local_booking_1756982647645,Local booking: Movie: Batman: The Dark Knight; Date: 2025-09-04; Time: 10:00; Class: VIP; Tickets: 1; Seats: A1; Total: Rp 100.000,INFO

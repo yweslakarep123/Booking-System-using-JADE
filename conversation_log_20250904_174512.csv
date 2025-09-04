@@ -1,0 +1,26 @@
+timestamp,sender,receiver,performative,conversationId,content,level
+2025-09-04 17:45:12,SYSTEM,SYSTEM,SYSTEM_STARTUP,system,Multi-Agent Booking System started. Log file: conversation_log_20250904_174512.csv,INFO
+2025-09-04 17:45:33,GUI,customer,O2A_REQUEST,gui_request_1756982733218,GUI booking request: Batman: The Dark Knight at 16:00 for 1 tickets,INFO
+2025-09-04 17:45:33,customer,SYSTEM,STATE_CHANGE,system,State changed from IDLE to REQUESTING_BOOKING,INFO
+2025-09-04 17:45:33,customer,provider,BOOKING_REQUEST,movie_booking_1,Direct booking: Batman: The Dark Knight at 16:00 for seats A1,INFO
+2025-09-04 17:45:33,GUI,customer,BOOKING_REQUEST,gui_booking_1756982733226,Movie: Batman: The Dark Knight; Time: 16:00; Seats: A1; Class: VIP,INFO
+2025-09-04 17:45:33,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_BOOKING to REQUESTING_BOOKING,INFO
+2025-09-04 17:45:33,customer,provider,REQUEST,movie_booking_1,BOOKING:Time=16:00;Seats=A1;Class=VIP,INFO
+2025-09-04 17:45:33,customer,provider,REQUEST,movie_booking_1,BOOKING:Time=16:00;Seats=A1;Class=VIP,INFO
+2025-09-04 17:45:33,provider,customer,CONFIRM,movie_booking_1,Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 16,INFO
+2025-09-04 17:45:33,provider,customer,CONFIRM,movie_booking_1,Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 16,INFO
+2025-09-04 17:45:33,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_BOOKING to BOOKING_COMPLETED,INFO
+2025-09-04 17:45:33,customer,GUI,CONFIRMATION,movie_booking_1,Sending confirmation to GUI: SUCCESS - Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 16,INFO
+2025-09-04 17:45:36,GUI,customer,BOOKING_SUCCESS,gui_booking_1756982736633,Booking confirmed: Movie: Batman: The Dark Knight; Time: 16:00; Seats: A1; Class: VIP - Booking confirmed! 1 seat(s) booked successfully.,INFO
+2025-09-04 17:45:49,GUI,customer,O2A_REQUEST,gui_request_1756982749512,GUI booking request: Top Gun: Maverick at 09:30 for 2 tickets,INFO
+2025-09-04 17:45:49,GUI,customer,BOOKING_REQUEST,gui_booking_1756982749513,Movie: Top Gun: Maverick; Time: 09:30; Seats: B1;B4; Class: Regular,INFO
+2025-09-04 17:45:49,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from BOOKING_COMPLETED to REQUESTING_BOOKING,INFO
+2025-09-04 17:45:49,customer,provider,BOOKING_REQUEST,movie_booking_2,Direct booking: Top Gun: Maverick at 09:30 for seats B1;B2,INFO
+2025-09-04 17:45:49,customer,SYSTEM,STATE_CHANGE,movie_booking_2,State changed from REQUESTING_BOOKING to REQUESTING_BOOKING,INFO
+2025-09-04 17:45:49,customer,provider,REQUEST,movie_booking_2,BOOKING:Time=09:30;Seats=B1;B2;Class=Regular,INFO
+2025-09-04 17:45:49,customer,provider,REQUEST,movie_booking_2,BOOKING:Time=09:30;Seats=B1;B2;Class=Regular,INFO
+2025-09-04 17:45:49,provider,customer,CONFIRM,movie_booking_2,Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 09,INFO
+2025-09-04 17:45:49,provider,customer,CONFIRM,movie_booking_2,Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 09,INFO
+2025-09-04 17:45:49,customer,SYSTEM,STATE_CHANGE,movie_booking_2,State changed from REQUESTING_BOOKING to BOOKING_COMPLETED,INFO
+2025-09-04 17:45:49,customer,GUI,CONFIRMATION,movie_booking_2,Sending confirmation to GUI: SUCCESS - Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 09,INFO
+2025-09-04 17:45:53,GUI,customer,BOOKING_SUCCESS,gui_booking_1756982753591,Booking confirmed: Movie: Top Gun: Maverick; Time: 09:30; Seats: B1;B4; Class: Regular - Booking confirmed! 2 seat(s) booked successfully.,INFO
