@@ -1,2 +1,0 @@
-timestamp,sender,receiver,performative,conversationId,content,level
-2025-09-01 13:24:14,SYSTEM,SYSTEM,SYSTEM_STARTUP,system,Multi-Agent Booking System started. Log file: conversation_log_20250901_132414.csv,INFO

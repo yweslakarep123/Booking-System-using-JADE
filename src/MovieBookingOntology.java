@@ -9,13 +9,16 @@ import jade.content.schema.PrimitiveSchema;
 public class MovieBookingOntology extends Ontology {
     public static final String ONTOLOGY_NAME = "Movie-Booking-Ontology";
     
-    // Performatives
+    // Performatives (FIPA-ACL compliant)
     public static final int REQUEST_INFO = 1;
     public static final int INFORM_OPTIONS = 2;
     public static final int REQUEST_BOOKING = 3;
     public static final int CONFIRM_BOOKING = 4;
     public static final int DISCONFIRM_BOOKING = 5;
     public static final int REQUEST_ALTERNATIVE = 6;
+    public static final int QUERY_IF = 7;
+    public static final int AGREE = 8;
+    public static final int REFUSE = 9;
     
     // Concepts
     public static final String MOVIE_REQUEST = "MovieRequest";
@@ -23,6 +26,8 @@ public class MovieBookingOntology extends Ontology {
     public static final String BOOKING_REQUEST = "BookingRequest";
     public static final String BOOKING_RESPONSE = "BookingResponse";
     public static final String SEAT_INFO = "SeatInfo";
+    public static final String ALTERNATIVE_REQUEST = "AlternativeRequest";
+    public static final String SEAT_AVAILABILITY = "SeatAvailability";
     
     private static Ontology instance = new MovieBookingOntology();
     
@@ -68,6 +73,19 @@ public class MovieBookingOntology extends Ontology {
             cs.add("success", (PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
             cs.add("message", (PrimitiveSchema) getSchema(BasicOntology.STRING));
             cs.add("transactionId", (PrimitiveSchema) getSchema(BasicOntology.STRING));
+            add(cs);
+            
+            // AlternativeRequest Schema
+            cs = new ConceptSchema(ALTERNATIVE_REQUEST);
+            cs.add("seatClass", (PrimitiveSchema) getSchema(BasicOntology.STRING));
+            cs.add("preferredSeats", (PrimitiveSchema) getSchema(BasicOntology.STRING));
+            add(cs);
+            
+            // SeatAvailability Schema
+            cs = new ConceptSchema(SEAT_AVAILABILITY);
+            cs.add("seatId", (PrimitiveSchema) getSchema(BasicOntology.STRING));
+            cs.add("available", (PrimitiveSchema) getSchema(BasicOntology.BOOLEAN));
+            cs.add("lastChecked", (PrimitiveSchema) getSchema(BasicOntology.INTEGER));
             add(cs);
             
         } catch (OntologyException oe) {
