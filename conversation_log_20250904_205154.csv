@@ -1,0 +1,17 @@
+timestamp,sender,receiver,performative,conversationId,content,level
+2025-09-04 20:51:54,SYSTEM,SYSTEM,SYSTEM_STARTUP,system,Multi-Agent Booking System started. Log file: conversation_log_20250904_205154.csv,INFO
+2025-09-04 20:52:03,GUI,customer,O2A_REQUEST,gui_request_1756993923201,GUI booking request: Batman: The Dark Knight at 10:00 for 1 tickets,INFO
+2025-09-04 20:52:03,customer,SYSTEM,STATE_CHANGE,system,State changed from IDLE to REQUESTING_BOOKING,INFO
+2025-09-04 20:52:03,customer,provider,BOOKING_REQUEST,movie_booking_1,Direct booking: Batman: The Dark Knight at 10:00 for seats A1,INFO
+2025-09-04 20:52:03,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_BOOKING to CHECKING_SEAT,INFO
+2025-09-04 20:52:03,GUI,customer,BOOKING_REQUEST,gui_booking_1756993923209,Movie: Batman: The Dark Knight; Time: 10:00; Seats: A3; Class: VIP,INFO
+2025-09-04 20:52:03,customer,provider,QUERY_IF,movie_booking_1,BOOKING:Time=10:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:52:03,customer,provider,QUERY-IF,movie_booking_1,BOOKING:Time=10:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:52:03,provider,customer,REFUSE,movie_booking_1,Seats are not available,INFO
+2025-09-04 20:52:03,provider,customer,REFUSE,movie_booking_1,Seats are not available,INFO
+2025-09-04 20:52:03,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from CHECKING_SEAT to REQUESTING_INFO,INFO
+2025-09-04 20:52:03,customer,provider,REQUEST,movie_booking_1,ALTERNATIVE:VIP,INFO
+2025-09-04 20:52:03,customer,provider,REQUEST,movie_booking_1,ALTERNATIVE:VIP,INFO
+2025-09-04 20:52:03,provider,customer,INFORM,movie_booking_1,Alternatif kursi tersedia: C1(Economy); B1(Regular); C2(Economy); A1(VIP); B2(Regular),INFO
+2025-09-04 20:52:03,provider,customer,INFORM,movie_booking_1,Alternatif kursi tersedia: C1(Economy); B1(Regular); C2(Economy); A1(VIP); B2(Regular),INFO
+2025-09-04 20:52:03,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_INFO to RECEIVED_OPTIONS,INFO

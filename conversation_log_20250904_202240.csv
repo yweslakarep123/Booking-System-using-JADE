@@ -1,0 +1,26 @@
+timestamp,sender,receiver,performative,conversationId,content,level
+2025-09-04 20:22:40,SYSTEM,SYSTEM,SYSTEM_STARTUP,system,Multi-Agent Booking System started. Log file: conversation_log_20250904_202240.csv,INFO
+2025-09-04 20:22:51,GUI,customer,O2A_REQUEST,gui_request_1756992171933,GUI booking request: Batman: The Dark Knight at 10:00 for 1 tickets,INFO
+2025-09-04 20:22:51,customer,SYSTEM,STATE_CHANGE,system,State changed from IDLE to REQUESTING_BOOKING,INFO
+2025-09-04 20:22:51,customer,provider,BOOKING_REQUEST,movie_booking_1,Direct booking: Batman: The Dark Knight at 10:00 for seats A1,INFO
+2025-09-04 20:22:51,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_BOOKING to REQUESTING_BOOKING,INFO
+2025-09-04 20:22:51,GUI,customer,BOOKING_REQUEST,gui_booking_1756992171942,Movie: Batman: The Dark Knight; Time: 10:00; Seats: A1; Class: VIP,INFO
+2025-09-04 20:22:51,customer,provider,REQUEST,movie_booking_1,BOOKING:Time=10:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:22:51,customer,provider,REQUEST,movie_booking_1,BOOKING:Time=10:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:22:51,provider,customer,CONFIRM,movie_booking_1,Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 10,INFO
+2025-09-04 20:22:51,provider,customer,CONFIRM,movie_booking_1,Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 10,INFO
+2025-09-04 20:22:51,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from REQUESTING_BOOKING to BOOKING_COMPLETED,INFO
+2025-09-04 20:22:51,customer,GUI,CONFIRMATION,movie_booking_1,Sending confirmation to GUI: SUCCESS - Booking berhasil! Transaction ID: TXN_1; Kursi: ; Waktu: 10,INFO
+2025-09-04 20:22:58,GUI,customer,BOOKING_FAILED,gui_booking_1756992178842,Booking failed: Movie: Batman: The Dark Knight; Time: 10:00; Seats: A1; Class: VIP - Sorry; the selected seats are no longer available. Please try different seats.,INFO
+2025-09-04 20:23:03,GUI,customer,O2A_REQUEST,gui_request_1756992183676,GUI booking request: Batman: The Dark Knight at 22:00 for 1 tickets,INFO
+2025-09-04 20:23:03,GUI,customer,BOOKING_REQUEST,gui_booking_1756992183677,Movie: Batman: The Dark Knight; Time: 22:00; Seats: A1; Class: VIP,INFO
+2025-09-04 20:23:03,customer,SYSTEM,STATE_CHANGE,movie_booking_1,State changed from BOOKING_COMPLETED to REQUESTING_BOOKING,INFO
+2025-09-04 20:23:03,customer,provider,BOOKING_REQUEST,movie_booking_2,Direct booking: Batman: The Dark Knight at 22:00 for seats A1,INFO
+2025-09-04 20:23:03,customer,SYSTEM,STATE_CHANGE,movie_booking_2,State changed from REQUESTING_BOOKING to REQUESTING_BOOKING,INFO
+2025-09-04 20:23:03,customer,provider,REQUEST,movie_booking_2,BOOKING:Time=22:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:23:03,customer,provider,REQUEST,movie_booking_2,BOOKING:Time=22:00;Seats=A1;Class=VIP,INFO
+2025-09-04 20:23:03,provider,customer,CONFIRM,movie_booking_2,Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 22,INFO
+2025-09-04 20:23:03,provider,customer,CONFIRM,movie_booking_2,Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 22,INFO
+2025-09-04 20:23:03,customer,SYSTEM,STATE_CHANGE,movie_booking_2,State changed from REQUESTING_BOOKING to BOOKING_COMPLETED,INFO
+2025-09-04 20:23:03,customer,GUI,CONFIRMATION,movie_booking_2,Sending confirmation to GUI: SUCCESS - Booking berhasil! Transaction ID: TXN_2; Kursi: ; Waktu: 22,INFO
+2025-09-04 20:23:08,GUI,customer,BOOKING_SUCCESS,gui_booking_1756992188156,Booking confirmed: Movie: Batman: The Dark Knight; Time: 22:00; Seats: A1; Class: VIP - Booking confirmed! 1 seat(s) booked successfully.,INFO
